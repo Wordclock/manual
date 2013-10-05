@@ -9,7 +9,7 @@ if(!$latexPreProcessFile)
 
 
 my $gcc_cmd   = "avr-gcc";
-my $latex_cmd = 'F:\ootb\editoren\miktex-portable-2.8.3761\miktex\bin\pdflatex.exe';
+my $latex_cmd = 'pdflatex.exe';
 
 my $escapableCharacters = "'´`\"\\\\/";
 

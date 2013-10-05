@@ -55,7 +55,7 @@
 								Der automatische Farbwechselmodus ist nur in der 
 								RGB"=Version verfügbar.
 						\end{Anmerkung}
-			  }
+				}{}
 }{% reine Monocolor Version des Textes
     \subsection{Standard-Modus}\label{sec_modi_monocolor}
 				Durch Betätigung der der gleichnamigen Taste wird in den "`\normalModeName"'
@@ -83,11 +83,19 @@
 				
 		\subsection{Demo-Modus}\label{sec_modi_demo}
 				Der Demo"=Modus schaltet die Ausgänge der Reihe nach 
-				einzeln an. 
+				einzeln an.  
 				
-				Dieser Modus dient hauptsächlich zum Testen der 
+				Mittels der "`+/-"' Tasten kann von diesem Einzeldurchlauf in einen Modus umgeschaltet werden, 
+				der alle Wörter gleichzeitg aktiviert. 
+				
+				Der Demo"=Modus dient hauptsächlich zum Testen der 
 				WordClock"=Schaltung, sowie zur Überprüfung der 
 				richtigen Beschaltung der LED Ausgänge. 
+
+				\begin{Anmerkung}
+					Technisch gesehen leuchten auch im zweiten Modus immer nur vier Segmente (von jedem Treiber-IC ein Ausgang).
+					Die Umschaltung erfolgt jedoch so schnell, dass dies für das Auge nicht wahrnehmbar ist.
+				\end{Anmerkung}
 		
 		\subsection{Sprachmodus-Auswahl}\label{sec_modi_regio}
 				Mittels der Sprachmodi"=Taste kann zwischen  
@@ -105,17 +113,33 @@
 						\item  "`Ossi"'-Modus 
 						\item  "`Schwaben"'-Modus (ständige Anzeige "`Es ist"') 
 						\item  "`Schwaben"'-Modus
+					\ifthenelse{\WCJesterMode=1}{
+						\item  "`Narren"'-Modus (ständige Anzeige "`Es ist"') 
+						\item  "`Narren"'-Modus 
+					}{}						
+						
 				\end{compactenum}
 				
-				Im Modus 2, 4, 6 und 8 erfolgt die Anzeige "`Es ist"' nur 
+				Im Modus 2, 4, 6\ifthenelse{\WCJesterMode=1}{, 8 und 10}{ und 8} erfolgt die Anzeige "`Es ist"' nur 
 				zur halben und vollen Stunde.
 				Dies ist um eine allzu ungleiche Leuchtdauer der LEDs zu verhindern 
 				und somit ein Voraltern dieser häufig benutzten LEDs zu verhindern.
 				
+				\ifthenelse{\WCJesterMode=1}{
+				Im Narren-Modus wird nach dem Zufallsprinzip aus allen Möglichkeiten eine Zeit 
+				darzustellen (auch komplett ungebräuchliche) eine ausgewählt.
+				}{}						
 
-
-					\begin{center}
-					  \arrayrulecolor{colorBack}
+				\newcommand{\addLastModeAndJesterModeLine}[1] % this workaround is neccearry to avoid braking the table with cluttering lines
+				{
+					\ifthenelse{\WCJesterMode=1}
+					{	#1
+						{Narren} & {zufällig}&{zufällig}&{zufällig}\tabularnewline\hline
+					}
+					{#1}
+				}
+				\begin{center}
+						\arrayrulecolor{colorBack}
 						\begin{tabular}{|C{.15\textwidth}L{.22\textwidth}L{.22\textwidth}L{.22\textwidth}|}
 								\hline
 								\rowcolor{colorBack}  {\textcolor{white}{}} 
@@ -129,8 +153,7 @@
 								\hline
 								{Ossi}& {viertel sieben}&{dreiviertel neun}&{zehn vor halb zwei}\tabularnewline
 								\hline
-								{Schwabe}& {viertel sieben}&{dreiviertel neun}&{zwanzig nach eins}\tabularnewline
-								\hline
+								\addLastModeAndJesterModeLine{{Schwabe}& {viertel sieben}&{dreiviertel neun}&{zwanzig nach eins}\tabularnewline\hline}
 						\end{tabular}
 				\end{center}
 

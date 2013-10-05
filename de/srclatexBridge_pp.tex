@@ -67,7 +67,7 @@
 
 
 % wird hier definiert, wegen optionaler Paketoption ^^
-\usepackage[ %
+\usepackage[ colorlinks=true,linkcolor=blue, %
             bookmarksopen,%
             bookmarksopenlevel = 3,%
             bookmarksnumbered,%
@@ -101,15 +101,16 @@
 \newcommand{\WCmonocolor}{0}
 
 
-\newcommand{\WCindividualCfg}{0}
+\newcommand{\WCindividualCfg}{1}
 \newcommand{\WCautoSave}{1}
 \newcommand{\WCdcf}{1}
 \newcommand{\WCambilight}{1}
 \newcommand{\WCbluetooth}{1}
 \newcommand{\WCauxIO}{1}
+\newcommand{\WCJesterMode}{1}
 
 
 \newcommand{\WCcolorProfiles}{\numberToText{4}}
 
 \newcommand{\WCSoftWareVersion}[2]{#1.#2} % Sofftwareversionen zusammensetzen (aus defines)
-\newcommand{\SoftwareVersion}{\WCSoftWareVersion{0}{12}}
+\newcommand{\SoftwareVersion}{\WCSoftWareVersion{0}{13}}
